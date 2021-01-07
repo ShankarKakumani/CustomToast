@@ -6,9 +6,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.ColorRes;
 import androidx.cardview.widget.CardView;
 
 public class Toasty {
+
+    private static Toast toast;
+
 
 
     public static void successToast(Activity act , String msg)
@@ -18,7 +22,11 @@ public class Toasty {
         ((ImageView) custom_view.findViewById(R.id.icon)).setImageResource(R.drawable.ic_success);
         ((CardView) custom_view.findViewById(R.id.parent_view)).setCardBackgroundColor(act.getResources().getColor(R.color.successColor));
 
-        Toast toast = new Toast(act);
+        if(toast != null)
+        {
+            toast.cancel();
+        }
+        toast = new Toast(act);
         toast.setDuration(Toast.LENGTH_LONG);
         toast.setView(custom_view);
         toast.show();
@@ -30,8 +38,11 @@ public class Toasty {
         ((TextView) custom_view.findViewById(R.id.message)).setText(msg);
         ((ImageView) custom_view.findViewById(R.id.icon)).setImageResource(R.drawable.ic_error);
         ((CardView) custom_view.findViewById(R.id.parent_view)).setCardBackgroundColor(act.getResources().getColor(R.color.errorColor));
-
-        Toast toast = new Toast(act);
+        if(toast != null)
+        {
+            toast.cancel();
+        }
+        toast = new Toast(act);
         toast.setDuration(Toast.LENGTH_LONG);
         toast.setView(custom_view);
         toast.show();
@@ -43,8 +54,11 @@ public class Toasty {
         ((TextView) custom_view.findViewById(R.id.message)).setText(msg);
         ((ImageView) custom_view.findViewById(R.id.icon)).setImageResource(R.drawable.ic_success);
         ((CardView) custom_view.findViewById(R.id.parent_view)).setCardBackgroundColor(act.getResources().getColor(R.color.errorColor));
-
-        Toast toast = new Toast(act);
+        if(toast != null)
+        {
+            toast.cancel();
+        }
+        toast = new Toast(act);
         toast.setDuration(Toast.LENGTH_LONG);
         toast.setView(custom_view);
         toast.show();
@@ -56,8 +70,27 @@ public class Toasty {
         ((TextView) custom_view.findViewById(R.id.message)).setText(msg);
         ((ImageView) custom_view.findViewById(R.id.icon)).setImageResource(R.drawable.ic_info);
         ((CardView) custom_view.findViewById(R.id.parent_view)).setCardBackgroundColor(act.getResources().getColor(R.color.infoColor));
+        if(toast != null)
+        {
+            toast.cancel();
+        }
+        toast = new Toast(act);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(custom_view);
+        toast.show();
+    }
 
-        Toast toast = new Toast(act);
+    public static void customToast(Activity act , String msg , int drawable , @ColorRes int color)
+    {
+        View custom_view = act.getLayoutInflater().inflate(R.layout.toast_layout, null);
+        ((TextView) custom_view.findViewById(R.id.message)).setText(msg);
+        ((ImageView) custom_view.findViewById(R.id.icon)).setImageResource(drawable);
+        ((CardView) custom_view.findViewById(R.id.parent_view)).setCardBackgroundColor(act.getResources().getColor(color));
+        if(toast != null)
+        {
+            toast.cancel();
+        }
+        toast = new Toast(act);
         toast.setDuration(Toast.LENGTH_LONG);
         toast.setView(custom_view);
         toast.show();
