@@ -12,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        Toasty.successToast(this,"Success Toast");
+        Snacky.snackButton(this,"Basic Snack","Okay", R.color.light_blue_600);
+        //Toasty.successToast(this,"Success Toast");
     }
 }
