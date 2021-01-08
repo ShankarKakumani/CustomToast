@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         Snacky.snackButton(this,"Basic Snack","Okay", R.color.light_blue_600);
-        //Toasty.successToast(this,"Success Toast");
+        Keyboard.hideKeyboard(this);
+        Toasty.basicToast(this,"Success Toast");
     }
 }

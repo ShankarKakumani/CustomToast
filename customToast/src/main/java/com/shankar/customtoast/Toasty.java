@@ -14,6 +14,17 @@ public class Toasty {
     private static Toast toast;
 
 
+    public static void basicToast(Activity act, String msg)
+    {
+        if(toast != null)
+        {
+            toast.cancel();
+        }
+        toast = new Toast(act);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setText(msg);
+        toast.show();
+    }
 
     public static void successToast(Activity act , String msg)
     {
